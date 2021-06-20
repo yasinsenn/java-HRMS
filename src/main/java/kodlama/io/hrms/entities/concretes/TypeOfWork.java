@@ -13,29 +13,30 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "cities")
+@Table(name = "type_of_work")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvert"})
-public class City {
-
+public class TypeOfWork {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "city_name")
-	private String cityName;
+	@Column(name = "type")
+	private String typeOfWork;
 	
-	@OneToMany(mappedBy = "city")
+	@OneToMany(mappedBy =   "typeOfWork")
 	private List<JobAdvert> jobAdvert;
-	
-	public City() {
+
+	public TypeOfWork() {
 		
 	}
-
-	public City(int id, String cityName) {
+	
+	public TypeOfWork(int id, String workingTime, List<JobAdvert> jobAdvert) {
 		super();
 		this.id = id;
-		this.cityName = cityName;
+		this.typeOfWork = workingTime;
+		this.jobAdvert = jobAdvert;
 	}
 
 	public int getId() {
@@ -46,11 +47,34 @@ public class City {
 		this.id = id;
 	}
 
-	public String getCityName() {
-		return cityName;
+	public String getTypeOfWork() {
+		return typeOfWork;
 	}
 
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
+	public void setTypeOfWork(String typeOfWork) {
+		this.typeOfWork = typeOfWork;
 	}
+
+	public List<JobAdvert> getJobAdvert() {
+		return jobAdvert;
+	}
+
+	public void setJobAdvert(List<JobAdvert> jobAdvert) {
+		this.jobAdvert = jobAdvert;
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

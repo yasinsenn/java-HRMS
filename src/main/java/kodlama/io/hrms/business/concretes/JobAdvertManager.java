@@ -11,7 +11,9 @@ import kodlama.io.hrms.core.utilities.Result;
 import kodlama.io.hrms.core.utilities.SuccessDataResult;
 import kodlama.io.hrms.core.utilities.SuccessResult;
 import kodlama.io.hrms.dataAccess.abstracts.JobAdvertsDao;
+import kodlama.io.hrms.entities.concretes.Employer;
 import kodlama.io.hrms.entities.concretes.JobAdvert;
+import net.bytebuddy.asm.Advice.This;
 
 @Service
 public class JobAdvertManager implements JobAdvertService {
@@ -65,4 +67,12 @@ public class JobAdvertManager implements JobAdvertService {
 	public DataResult<List<JobAdvert>> getByIsActivatedTrueAndEmployer_CompanyName(String companyName) {
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertsDao.getByIsActivatedTrueAndEmployer_CompanyName(companyName));
 	}
+
+
+	@Override
+	public DataResult<List<JobAdvert>> getAll() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertsDao.findAll(), "Data listelendi");
+	}
+	
+	
 }

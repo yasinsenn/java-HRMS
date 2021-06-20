@@ -4,11 +4,14 @@ import java.util.List;
 
 import kodlama.io.hrms.core.utilities.DataResult;
 import kodlama.io.hrms.core.utilities.Result;
+import kodlama.io.hrms.entities.concretes.Employer;
 import kodlama.io.hrms.entities.concretes.JobAdvert;
 
 public interface JobAdvertService {
 
 	Result add(JobAdvert jobAdverts);
+	
+	DataResult<List<JobAdvert>> getAll();
 	
 	DataResult<List<JobAdvert>> getByIsActivated(JobAdvert jobAdvert);
 	

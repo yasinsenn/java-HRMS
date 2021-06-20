@@ -2,6 +2,8 @@ package kodlama.io.hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +18,12 @@ import kodlama.io.hrms.entities.concretes.Employer;
 
 @RestController
 @RequestMapping("api/employers")
+@CrossOrigin
 public class EmployerControllers {
 
 	private EmployerService employerService;
 
+	@Autowired
 	public EmployerControllers(EmployerService employerService) {
 		super();
 		this.employerService = employerService;

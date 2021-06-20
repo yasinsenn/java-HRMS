@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,14 @@ import kodlama.io.hrms.business.abstracts.JobAdvertService;
 import kodlama.io.hrms.core.utilities.DataResult;
 import kodlama.io.hrms.core.utilities.Result;
 import kodlama.io.hrms.core.utilities.SuccessDataResult;
+import kodlama.io.hrms.entities.concretes.Employer;
 import kodlama.io.hrms.entities.concretes.JobAdvert;
 
 
 
 @RestController
 @RequestMapping("api/jobadverts")
+@CrossOrigin
 public class JobAdvertControllers {
 	
 	private JobAdvertService jobAdvertService;
@@ -34,6 +37,11 @@ public class JobAdvertControllers {
 	@PostMapping("/add")
 	public Result add( JobAdvert jobAdvert) {
 		return this.jobAdvertService.add(jobAdvert);
+	}
+	
+	@GetMapping("/getall")
+	public DataResult<List<JobAdvert>> getAll(){
+		return this.jobAdvertService.getAll();
 	}
 	
 	@GetMapping("/getByIsActivated")

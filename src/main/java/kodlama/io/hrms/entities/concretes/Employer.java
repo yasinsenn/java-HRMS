@@ -10,9 +10,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "employers")
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvert"})
 public class Employer extends User {
 
 //	@Id

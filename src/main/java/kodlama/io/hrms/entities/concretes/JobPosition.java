@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "job_positions")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvert"})
 public class JobPosition {
 
 	@Id
@@ -22,7 +25,7 @@ public class JobPosition {
 	private String positionName;
 	
 	@OneToMany(mappedBy = "jobPosition")
-	private List<JobAdvert> jobAdverts;
+	private List<JobAdvert> jobAdvert;
 	
 	public JobPosition() {
 		
